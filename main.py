@@ -18,7 +18,7 @@ class ObjectBlurrerScreen(BoxLayout):
     chosen_image_path = None
     yolo_model = YOLO(os.path.abspath('best.pt'))
     output_path = os.path.abspath('blurred_images')
-    shown_image_path = StringProperty('')
+    shown_image_path = StringProperty(os.path.abspath('1.png'))
     file_chooser_popup = FileChooserPopup()
 
     def open_file_chooser(self):
