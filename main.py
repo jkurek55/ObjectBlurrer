@@ -1,6 +1,6 @@
 import os.path
 import time
-
+import win32timezone
 from kivy.app import App
 from kivy.properties import StringProperty, ObjectProperty
 from kivy.uix.boxlayout import BoxLayout
@@ -16,8 +16,8 @@ from FileChooserPopup import *
 
 class ObjectBlurrerScreen(BoxLayout):
     chosen_image_path = None
-    yolo_model = YOLO('best.pt')
-    output_path = 'blurred_images'
+    yolo_model = YOLO(os.path.abspath('best.pt'))
+    output_path = os.path.abspath('blurred_images')
     shown_image_path = StringProperty('')
     file_chooser_popup = FileChooserPopup()
 
