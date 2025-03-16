@@ -1,0 +1,10 @@
+<FileChooserPopup>:
+    BoxLayout:
+        orientation: 'vertical'
+        FileChooserListView:
+            id: chooser
+            path: root.image_path
+        Button:
+            size_hint: 1, 0.1
+            on_release:
+                root.on_selection(chooser.selection)

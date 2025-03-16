@@ -1,0 +1,19 @@
+<ObjectBlurrerScreen>:
+    orientation: "vertical"
+
+    Label:
+        text: "jestem narzedziem etycznym i chuj"
+        size_hint: 1, 0.07
+
+    Button:
+        text: "Wybierz zdjecie"
+        on_release: root.open_file_chooser()
+        size_hint: 1, 0.1
+
+    Image:
+        source: root.shown_image_path
+
+    Button:
+        text: "Zamaż rejestracje i zapisz nowe zdjęcie"
+        size_hint: 1, 0.07
+        on_release: root.blur_image()
