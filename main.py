@@ -17,7 +17,11 @@ from FileChooserPopup import *
 class ObjectBlurrerScreen(BoxLayout):
     chosen_image_path = None
     yolo_model = YOLO(os.path.abspath('best.pt'))
-    output_path = os.path.abspath('blurred_images')
+    if getattr(sys, 'frozen', False):
+        base_path = os.path.dirname(sys.executable)
+    else:
+        base_path = os.path.dirname(os.path.abspath(__file__))
+    output_path = os.path.join(base_path, 'blurred_images')
     shown_image_path = StringProperty(os.path.abspath('1.png'))
     file_chooser_popup = FileChooserPopup()
 
@@ -37,7 +41,7 @@ class ObjectBlurrerScreen(BoxLayout):
 
                 roi = image[y1:y2, x1:x2].copy()
                 if roi.size > 0:
-                    blurred = cv2.GaussianBlur(roi, (25, 25), 30)
+                    blurred = cv2.GaussianBlur(roi, (45, 45), 50)
                     image[y1:y2, x1:x2] = blurred
         return image
 
